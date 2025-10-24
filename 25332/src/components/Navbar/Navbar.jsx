@@ -1,20 +1,24 @@
 import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
+import { useCartContext } from "../../context/CartContext";
+
+
 import { FaShoppingCart } from "react-icons/fa";
 
-const Navbar = () => {
-  const { cartItems } = useCart();
+const NavBar = () => {
+  const { cartItems } = useCartContext();
+
   const itemCount = cartItems.length;
 
   return (
     <nav style={{ display: "flex", justifyContent: "space-between", padding: "1rem", background: "#eee" }}>
       <div>
         <Link to="/" style={{ marginRight: "1rem" }}>Inicio</Link>
-        <Link to="/products" style={{ marginRight: "1rem" }}>Productos</Link>
+        <a href="#productos">Productos</a>
+
         <Link to="/page/25832">Página dinámica</Link>
       </div>
       <div style={{ position: "relative" }}>
-        <Link to="/cart">
+        <Link to="/carrito">
           <FaShoppingCart size={32} />
           {itemCount > 0 && (
             <span
@@ -38,4 +42,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
